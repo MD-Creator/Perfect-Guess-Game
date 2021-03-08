@@ -63,11 +63,14 @@ class game:
         print(f"Computer Number Was {comp_num}")
         with open(os.path.dirname(os.path.abspath(__file__))+'\\highscore.txt','r') as f:
             highscore = int(f.read())
-        if highscore < guesses:
+        if highscore > guesses:
             print(f"You have just broken your previous high score. Your New High Score Is {guesses}")
             with open(os.path.dirname(os.path.abspath(__file__))+'\\highscore.txt', 'w') as f:
                 f.write(str(guesses))
-        if highscore > guesses:
+        elif highscore < guesses:
+            print(f"Your highscore is {highscore}")
+        else:
+            print(f"Near Miss!")
             print(f"Your highscore is {highscore}")
 
         retry_input = game.check_to_retry(self,self.ask_to_retry)
